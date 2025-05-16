@@ -1,0 +1,26 @@
+{% extends 'app/base.html' %}
+
+{% load static %}
+{% block content %}
+
+<h2 class="text-center my-4">My Wishlist</h2>
+<div class="container">
+  <div class="row">
+    {% for item in wishlist %}
+    <div class="col-md-4 mb-3">
+      <div class="card">
+        <img src="{{ item.product.product_image.url }}" class="card-img-top" alt="{{ item.product.title }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.product.title }}</h5>
+          <p class="card-text">Price: ₹{{ item.product.discounted_price }}</p>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+      <p class="text-center">No items in wishlist.</p>
+    {% endfor %}
+  </div>
+</div>
+
+
+{% endblock %}

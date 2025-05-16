@@ -1,0 +1,43 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}Product Detail{% endblock title %}
+
+{% block main-content %}
+<div class="container py-5">
+    <div class="row g-4 align-items-start">
+        <!-- Product Image -->
+        <div class="col-md-6 text-center">
+            <img src="{{ product.product_image.url }}" class="img-fluid rounded shadow-sm" alt="{{ product.title }}">
+        </div>
+
+        <!-- Product Details -->
+        <div class="col-md-6">
+            <h2 class="fw-bold" style="font-family: Georgia;">{{ product.title }}</h2>
+            <h4 class="text-success">Rs. {{ product.discounted_price }}/-</h4>
+            <p class="text-muted text-decoration-line-through fs-5">
+                Rs. {{ product.selling_price }}/-
+            </p>
+
+            <h5 class="mt-4">Product Features</h5>
+            <ul class="fs-6" style="font-family: Rajdhani;">
+                <li>{{ product.discription }}</li>
+                <li>Composition: {{ product.composition }}</li>
+                <li>Use: {{ product.prodapp }}</li>
+            </ul>
+
+            <form action="/add-to-cart" method="GET" class="d-inline">
+                <input type="hidden" name="prod_id" value="{{ product.id }}">
+                <button type="submit" class="btn btn-danger btn-lg mt-3">Add to Cart</button>
+            </form>
+            <a href="{% url 'showcart' %}" class="btn btn-warning btn-lg mt-3 ms-3">Buy Now</a>
+            {% if wishlist %}
+            <a pid="{{product.id}}" class="minus-wishlist btn btn-danger shadow px-5 py-2 ms-4"><i class="fas fa-heart fa-lg"></i></a>
+            {% else %}
+            <a pid="{{product.id}}" class="plus-wishlist btn btn-success shadow px-5 py-2 ms-4"><i class="fas fa-heart fa-lg"></i></a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<br><br><br>
+{% endblock main-content %}
