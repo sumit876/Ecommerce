@@ -5,7 +5,7 @@ from .models import Customer , Cart , Payment ,OrderPlaced , Product, Wishlist
 from django.db.models import Q 
 from . forms import CustomerRegistrationForm ,CustomerProfileForm
 from django.contrib import messages
-import razorpay
+import razorpay # type: ignore
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator

@@ -136,3 +136,13 @@ RAZORPAY_API_KEY = "rzp_test_LyqnbeURn0vnnv"
 RAZORPAY_API_SECRET = "PcRA8VMDYgm0PTlrRx0FwzSh"
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+INSTALLED_APPS += ['cloudinary', 'cloudinary_storage']
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'your_cloud_name',
+    'API_KEY': 'your_api_key',
+    'API_SECRET': 'your_api_secret',
+}
